@@ -1,12 +1,19 @@
 <?php 
 require_once('./model/ManagerUser.php');
 require_once('./model/ManagerMovie.php');
+require_once('UploadFiles.php');
 
 function loginPage() {
-    require("./view/login.php");
+    require_once("./view/login.php");
 }
-// insert or connect the user
+/**
+ * connects user
+ * @params mixed 
+ * 
+ * 
+ * */ 
 function loginUser($params){
+    echo "!!! controller loginUser function!!!!";
     $managerUser = new ManagerUser();
     $userId = $managerUser->loginUser($params);
     if(isset($params['ajax'])) {
@@ -24,7 +31,7 @@ function viewProfile($userId) {
     $dataMovie= $managerMovie->loadMovies($user['id']);
     require("./view/profile.php");
 }
-
+//TODO: CHECK & DEL
 function loadProfile($postParams){
     $username = htmlspecialchars($postParams['username']);
     $password = htmlspecialchars($postParams['password']);
@@ -38,9 +45,25 @@ function loadProfile($postParams){
 
 function addMovie($params) {
     //$params <== $bodyArr <== movieData of movieDB.js
-    $managerMovie = new ManagerMovie ();
-    $listMovies = $managerMovie->addMovies($params);
-    echo json_encode($listMovies);
+    // $last_id = $managerMovie->addMovie($params);
+    // $movie = $managerMovie->getNewMovie($last_id);
+    // echo json_encode($movie);
+    $managerMovie = new ManagerMovie();
+    $last_id = $managerMovie->addMovie($params);
+    $movie = $managerMovie->getNewMovie($last_id);
+    echo json_encode($movie);   
+}
+
+function deleteMovie($params){
+    echo "deleteMovie of controller";
+    $managerMovie = new ManagerMovie();
+    $managerMovie->deleteMovie($params);
+}
+
+function updateRanking($params){
+    echo "updateRanking of controller";
+    $managerMovie = new ManagerMovie();
+    $managerMovie->updateRanking($params);
 }
 
 function subscribeUser($params) {
@@ -59,5 +82,16 @@ function logoutUser() {
     $_SESSION = [];
     session_destroy();
     header('Location: index.php');
+}
 
+
+function uploadImg($params, $userId) {
+    echo "this is userId in uploadImg in controller.php";
+    $uploadFiles = new UploadFiles();
+    $fileDestination = $uploadFiles -> validateFiles($params);
+
+    $managerUser = new ManagerUser($userId);
+    $managerUser->uploadImg($fileDestination, $userId);
+
+    header('Location: index.php?action=viewProfile');
 }

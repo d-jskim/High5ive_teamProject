@@ -1,0 +1,248 @@
+body, .hero, .hero-image, section, #fullpage {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background: #FCF5EF;
+}
+
+
+.menu-list {
+    display: block;
+    padding: 0px;
+    list-style-type: none;
+    text-align: center;
+    white-space: nowrap;
+
+}
+  
+.menu-list-item {
+    display: block;
+    min-width: 90px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    float: right;
+    line-height: 50px;
+    color: #000;
+}
+  
+.menu-list-item a {
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgba(17, 25, 85, 1);
+    font-size: 1.2em;
+}
+  
+.menu-list-item:hover a {
+    text-decoration: none;
+    color: rgba(153, 153, 153, 1);
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+  
+@media(min-width: 480px) {
+    .menu-list-item { display: inline-block; }
+    .menu-list-item a { min-width: 90px; }
+}
+
+
+.hero {
+
+    /* overflow: hidden; */
+    display: flex;
+}
+
+
+.hero-image {
+    width: 100vw;
+    min-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 0;
+
+    
+}
+
+.left-main-content {
+    float: left;
+    height: 100vh;
+    z-index: -1;
+    width: 50%;
+    background: linear-gradient(#F7971E, #FFD200);
+    margin: 0;
+    padding: 0;
+
+}
+
+.nav ul {
+padding: 0;
+margin: 0;
+position: absolute;
+right: 5%;
+}
+
+#logo-img {
+    width: 10%;
+    padding: 2%;
+}
+
+.main-content {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 7%;
+    background: none;
+}
+
+
+.content-container {
+
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    z-index: 100;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+}
+
+#leon {
+    width: 25%;
+    position: absolute;
+    top: 4%;
+    right: 54.5%;
+    
+}
+
+
+
+#button-div {
+    position: absolute;
+    top: 60%;
+    left: 26%;
+}
+
+#button {
+    width: 200px;
+    height: 80px;
+    font-size: 1.5rem;
+    background: rgb(235, 91, 82);
+    border-style: none;
+    border-radius: 4%;
+    color: white;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+.main-content:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.main-content img {
+    width: 6%;
+ 
+}
+
+.crop-bg {
+    position: absolute;
+    top: 10%;
+    left: 13.5%;
+    height: 600px;
+    border-radius: 50%;
+    opacity: 1;
+}
+
+#right-side {
+    width: 50%;
+    float: right;
+    height: 100%;
+
+}
+
+
+#right-side h1 {
+    position: absolute;
+    top: 0%;
+    left: 5%;
+    font-size: 1.8em;
+}
+
+#right-side h2 {
+    position: absolute;
+    top: 30%;
+    right: 20%;
+}
+
+#right-side h3 {
+    color: white;
+    margin: 0;
+    padding: 0;
+    position: absolute; 
+    
+}
+
+
+
+.phone-layout {
+    width: 40vw;
+    min-height: 60vh;
+    color: rgb(82, 79, 79);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    border-radius: 4%;
+    right: 10%;
+    top: 15%;
+    z-index: 0;
+
+}
+
+.phone-layout-top { 
+    height: 45vh;
+    font-size: 2em;
+}
+
+.phone-layout-border {
+    width: 90%;
+    margin: auto;
+    height: 70px;
+    padding: 2%;
+    border: 3px solid white;
+}
+
+.phone-layout-bottom {  
+    height: 10vh;
+    padding-left: 5%;
+
+}
+
+
+.phone-layout-bottom span {
+
+    z-index: 100;
+    font-size: 1.5em;
+    
+}
+
+.search-bar {
+    position: absolute;
+    top: 10%;
+    height: 20%;
+    border-bottom: 2px solid white;
+    border-radius: 3%;
+  
+    margin-right: 4%;
+    z-index: 1000;
+}
+

@@ -1,0 +1,278 @@
+*, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    background: #FCF5EF;
+}
+
+
+
+#registration {
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    width: 50%;
+    height: 70vh;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    position: relative;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+
+    
+}
+  
+  /* Clear floats after the columns */
+
+
+.row     {
+    height: 80vh;
+    content: "";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0;
+    background: #FCF5EF;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1%;
+
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.header {
+   position: absolute;
+   top: 0;
+   right: 0%;
+   text-align: center;
+   z-index: 1;
+   width: 100%;
+}
+
+.header {
+    text-align: center;
+}
+
+
+#gmail {
+   padding-top: 12%;
+
+}
+
+
+#gmail h2 {
+    font-size: .9em;
+    text-transform: uppercase;
+    padding-bottom: 3%;
+
+}
+
+.overlayImg {
+    position: absolute;
+    top: -7.2%;
+    left: 0;
+    padding: 0;
+    height: 114.5%;
+    width: 600px;
+    z-index: 2;
+}
+
+.overlayImg-left {
+    position: absolute;
+    top: -7.2%;
+    right: 0;
+    padding: 0;
+    height: 114.5%;
+    width: 600px;
+    z-index: 2;
+}
+
+
+.slider-menu {
+    position: absolute;
+    top: 3%;
+}
+
+.slider-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+   
+}
+
+.slider-menu li {
+    position: relative;
+    float: left;
+    width: 90.25px;
+    text-align: center; 
+    width: 150px;
+    float: left;
+    font-size: 1.5em;
+}
+
+
+form {
+    background: rgb(112, 93, 236);
+    -webkit-appearance: none;
+    padding: 10%;
+    color: #FCF5EF;
+    box-shadow: 0 4px 8px 0 rgba(112, 93, 236, .2), 0 6px 20px 0 rgba(112, 93, 236, .2);
+}
+
+
+input, input:focus{
+    border-width: 0px;
+    outline:0; /* I have also tried outline:none */
+    -webkit-appearance:none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    color: #FCF5EF;
+}
+
+
+.form-buttons {
+    font-size: 2em;
+    width: 100%;
+    height: 10%;
+    background: none;
+    outline: none;
+    color: #FCF5EF;
+    border-bottom: 1px solid #FCF5EF;
+}
+
+
+button {
+    width: 101%;
+    height: 30%;
+    font-size: 2em;
+    vertical-align: middle;
+    border: none;
+    background: none;
+    color: rgb(112, 93, 236);
+    background: #FCF5EF;
+    padding: 3%;
+    
+}
+
+::placeholder {
+    color: #FCF5EF;
+}
+
+
+
+
+.range {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: absolute;
+    left: 50%;
+    top: 2%;
+    width: 200px;
+    margin-top: 6px;
+    transform: translate(-50%, -50%);
+  
+  }
+  
+  input[type=range]::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    background: black;
+
+    height: 2px;
+  }
+  
+  input[type=range]:focus {
+    outline: none;
+  }
+  
+  input[type=range]::-moz-range-track {
+    -moz-appearance: none;
+    background: black;
+    
+    height: 2px;
+  }
+  
+  input[type=range]::-webkit-slider-thumb {
+    animation: shadow-pulse 1s linear infinite alternate;
+    -webkit-appearance: none;
+    border: 2px solid black;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    max-width: 80px;
+    position: relative;
+    bottom: 11px;
+    background-color: black;
+    cursor: -webkit-grab;
+  }
+  
+  input[type=range]::-moz-range-thumb {
+    -moz-appearance: none;
+    border: 2px solid black;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    max-width: 80px;
+    position: relative;
+    bottom: 11px;
+    background-color: black;
+    cursor: -moz-grab;
+    animation: shadow-pulse 1s infinite;
+    -moz-transition: border 1000ms ease;
+    transition: border 1000ms ease;
+  }
+
+  
+
+
+
+  
+/*   
+  .range.blue::-webkit-slider-thumb {
+     border-color: rgb(0,0,0);
+  }
+  
+  .range.ltpurple::-webkit-slider-thumb {
+     border-color: rgb(0,0,0);
+  }
+  
+  .range.purple::-webkit-slider-thumb {
+     border-color: rgb(0,0,0);
+  }
+  
+  .range.pink::-webkit-slider-thumb {
+     border-color: rgb(0,0,0);
+  }
+  
+  .range.blue::-moz-range-thumb {
+     border-color: rgb(0,0,0);
+  }
+  
+  .range.ltpurple::-moz-range-thumb {
+     border-color: rgb(0,0,0);
+  }
+  
+  .range.purple::-moz-range-thumb {
+     border-color: rgb(0,0,0);
+  }
+  
+  .range.pink::-moz-range-thumb {
+     border-color: rgb(0,0,0); */
+  
+  
+  input[type=range]::-webkit-slider-thumb:active {
+    cursor: -webkit-grabbing;
+  }
+  
+  input[type=range]::-moz-range-thumb:active {
+    cursor: -moz-grabbing;
+  }

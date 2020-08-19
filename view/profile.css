@@ -1,0 +1,348 @@
+body {
+    font-family: Lato, sans-serif;
+    z-index: 0;
+    padding: 0;
+    margin: 0;
+    background: #FCF5EF;
+}
+
+*:focus {
+    outline-width: 0;
+}
+
+.header-container {
+    position: relative;
+    
+    z-index: -1;
+}
+
+
+
+.header {
+    padding: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100px;
+    text-align: left;
+    background: linear-gradient(to right, #8e2de2, #4a00e0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    font-size: 25px;
+    width: 90%; 
+    margin:  0;
+    padding: 30px 5%;
+    z-index: 0;
+    height: 100px;
+}
+
+.header input {
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    border-width: 0px;
+    background: none;
+    outline: 0; 
+    -webkit-appearance: none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    color: #FCF5EF;
+}
+
+ 
+.header h1 {
+    font-size: 1em;
+    color: #FCF5EF;
+    position: absolute;
+    bottom: 80px; 
+    float: left;
+    z-index: inherit;
+}
+
+/* img {
+    width: 180px;
+    margin: 40px;
+} */
+
+#profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: absolute;
+    top: 70px;
+    left: 50px;
+}
+
+.children-container {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 20%;
+    left: 50%;
+}
+ 
+button { 
+    font-size: 0.7em;
+    background: darken(#E0C9CB);
+    padding: 10px;
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    margin: -1px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+        
+#cardPlus {
+    text-align: center;
+    cursor: pointer;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    width: 100px;
+    height: 80px;
+}
+
+#delete {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    width: 40px;
+    height: 50px;
+}
+
+#content {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    z-index: 100;   
+    background: none;
+
+
+}
+
+.lists {
+    display: flex;
+    justify-content: center;
+    flex: 100;
+    width: 100%;
+    overflow-x: scroll;
+    padding-top: 10%;
+
+}
+
+.lists .list {
+    position: absolute;
+    top: 12%;
+	max-width: 600px;
+	min-height: 150px;
+	margin: 0 15px;
+}
+
+.lists .list .list-item {
+   
+	border-radius: 8px;
+	padding: 15px 20px;
+	text-align: center;
+	margin: 4px 0px;
+	height: 140px;
+}
+
+
+
+.cards {
+    position: relative;
+   
+    margin: auto;
+    margin-top: 10px;
+   
+    width: 300px;
+    height: 120px;
+    background: rgba(112, 71, 213, 0.9);
+    box-shadow: 0 4px 8px 0 rgba(112, 93, 236, .2), 0 6px 20px 0 rgba(112, 93, 236, .2);
+    color: white;
+    border-radius: 20px 20px;
+}
+
+.cards h1 {
+    font-size: .8em;
+    font-weight: 700;
+    display: inline-block;
+    position: absolute;
+    left: 40%;
+    color: rgb(245, 197, 78)
+}
+
+.cards img {
+    width: 79px;
+    height: 80px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 10%;  
+    left: 5%;
+    -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(15%, transparent), to(rgba(255, 255, 255, 0.1)));
+
+}
+
+
+.children-container {
+    position: absolute;
+    width: 40%;
+    margin: auto;
+    left: 120px;
+    top: 27px;
+}
+
+.children-container p {
+    font-size: .7em;
+  
+}
+
+.input-card {
+    position: relative;
+    margin: auto;
+    margin-top: 10px;
+    width: 300px;
+    height: 180px;
+    background: rgba(112, 71, 213, 0.9);
+    box-shadow: 0 4px 8px 0 rgba(112, 93, 236, .2), 0 6px 20px 0 rgba(112, 93, 236, .2);
+    color: white;
+    border-radius: 20px 20px;
+}
+
+.hand-logo {
+    position: absolute;
+    right: 6%;
+    bottom: 10%;
+}
+
+#handOpen {
+    display: none;
+}
+
+#handClosed {
+    cursor: grab;
+   display: none
+}
+
+
+/** Add here to search list item div style **/
+#autocomplete {
+    width: 228px;
+    border: 1px solid #aaa;
+    border-top-width: 0;
+    background-color: #fff;
+    position: absolute;
+    top: 98vh;
+    left: 39%;
+  }
+  
+  #autocomplete div {
+    width: 220px;
+    padding: 2px 4px;
+    text-align: left;
+    border: 0;
+    background-color: #fff;
+  }
+  
+  #autocomplete:hover,
+  .div_focus {
+    background-color: #ddd !important;
+  }
+  
+
+  
+
+  .input-file-container {
+    position: relative;
+    width: 40px;
+    margin: 1.5em 0;
+  } 
+ .input-file-trigger {
+    display: block;
+    text-align: center;
+    padding: 6px;
+    background: #39D2B4;
+    color: white;
+    font-size: .8em;
+    transition: all .4s;
+    cursor: pointer;
+    width: 80px;
+  }
+ .input-file {
+    position: absolute;
+    top: 0; left: 0;
+    width: 40px;
+    opacity: 0;
+    padding: 14px 0;
+    cursor: pointer;
+  }
+ .input-file:hover + .input-file-trigger,
+ .input-file:focus + .input-file-trigger,
+ .input-file-trigger:hover,
+ .input-file-trigger:focus {
+    background: #34495E;
+    color: #39D2B4;
+  }
+  
+  .file-return {
+    margin: 0;
+  }
+  .file-return:not(:empty) {
+    margin: 1em 0;
+  }
+ .file-return {
+    font-style: italic;
+    font-size: .9em;
+    font-weight: bold;
+  }
+ .file-return:not(:empty):before {
+    content: "Selected file: ";
+    font-style: normal;
+    font-weight: normal;
+  }
+  
+
+  .input-box, .input-box:focus{
+    
+    width:150px;
+    font-size: 1em;
+    height: 30px;
+    padding: 3px;
+    margin:2px;
+    background-color:none;
+    color:black;
+    border-width: 0px;
+    outline:0; /* I have also tried outline:none */
+    -webkit-appearance:none;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+
+
+
+  #search {
+      height: 30px;
+      background: none;
+      color: white;
+      padding: 5px;
+  }
+
+
+
+  #edit, #save {
+    height: 30px;
+    background: none;
+    color: white;
+    padding: 5px;
+    margin: 3px;
+  }
+

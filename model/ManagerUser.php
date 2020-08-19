@@ -1,10 +1,26 @@
 <?php
 require_once("Manager.php");
 class ManagerUser extends Manager {
+    protected $_userId;
+    
+
+    // function __construct($userId){
+    //     parent::__construct();
+    //     $this->_userId = $userId;
+    // }
+    function verifyUserClass($username) {
+        $query = "SELECT id FROM users WHERE username = :username";
+        $req = $this->_db->prepare($query);
+        $req->execute(array('username' => $username));
+        $result = $req->fetch();
+        return ($result) ?  $result['id'] : false;
+    }
+
 
     function verifyUser($username) {
         $bdd = $this->dbConnect();
-        $req = $bdd->prepare("SELECT id FROM users WHERE username = :username");
+        $query = "SELECT id FROM users WHERE username = :username";
+        $req = $bdd->prepare($query);
         $req->execute(array('username' => $username));
         $result = $req->fetch();
         return ($result) ?  $result['id'] : false;
@@ -15,14 +31,13 @@ class ManagerUser extends Manager {
         $username = isset($params['username']) ? htmlspecialchars($params['username']) : '';
         $socialM = isset($params['socialM']) ? $params['socialM'] : null;
         $userId = '';
-
+        $bdd = $this->dbConnect();
         // do it the tests for the isset case normal FB and GMAIL
         if ($socialM) {
             if ($socialM == 'gmail') {
                 $userId = $this->verifyUser($username);
                 if(!$userId){
                     // user creation
-                    $bdd = $this->dbConnect();
                     $query = "INSERT INTO users(username, password, email, imageurl, google) VALUES(:username, :password, :email, :imageurl, 1)";
                     $req = $bdd->prepare($query);
 
@@ -44,17 +59,15 @@ class ManagerUser extends Manager {
             //     //Jee Soo insert FB case here
             // }
         } else { //normal case check
-            $bdd = $this->dbConnect();
             $req = $bdd->prepare("SELECT * FROM users WHERE username = :username");
             $req->execute(array(
                 'username' => $username,
             ));
             $user = $req->fetch();
-            $pass_hache = $user['password'];
             $userId = $user['id'];
             
             //Confirm pw with db
-            $isPasswordCorrect = password_verify($params['password'], $pass_hache);
+            $isPasswordCorrect = password_verify($params['password'], $user['password']);
     
             //Start new session
             if($isPasswordCorrect) {
@@ -74,6 +87,14 @@ class ManagerUser extends Manager {
         return $user;
     }
 
+    function uploadImg($fileDestination, $userId){
+        $db = $this->dbConnect();
+        $req = $db->prepare("UPDATE users SET imageurl = :imageurl WHERE id = :userId");
+        $req->execute(array(
+            'imageurl' => $fileDestination,
+            'userId' => $userId // give a default value at this moment
+        ));        
+    }
     function subscribeUser($params) {
         // Setting global variables for inputs to empty (prep for errors)
         $userErr = $emailErr = $passwordErr = "";

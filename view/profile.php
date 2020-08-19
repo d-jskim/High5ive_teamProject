@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php $session_userId = (isset($_SESSION['userId']))?$_SESSION['userId']:'';?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,95 +11,73 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Profile Wireframe</title>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="./view/profile.css">
+    <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
 </head>
-<style>
-#content {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin: auto;
-}
 
-
-.cards {
-    display: flex;
-    margin: auto;
-    width: 30%;
-    justify-content: center;
-    padding: 2%;
-}
-
-.movieInfo {
-    padding: 5%;
-}
-
-
-
-
-body{
-    font-family: Arial;
-    margin: 0;
-}
-
-/*This is the header, I think? */
-.header {
-    padding: 50px;
-    text-align: center;
-    background-color: black;
-    color: white;
-    font-size: 25px;
-    width: 90%; 
-    margin:  0;
-    padding: 30px 5%;
-}
-
-/*This is the page content, I think? */
-.content {
-    padding:22px;
-    text-align: center;
-    background-color: grey;
-    min-height: 100vh;
-}
-</style>
 <body>
 
-
+<div class="header-container">
 
 <div class="header">
-    <form align="right" name="logout" method="post" action="log_out.php" style="black">
-        <label class="logoutLblPos">
-            <input name="submit2" type="submit" id="submit2" value="logout">
-        </label>
-    </form>
-    <h1><?=$user['username']?></h1>
-</div>
-<a href="#" onclick="signOut();">Sign out</a>
-        <div class="g-signin2" type="hidden"></div>
-        <script src="./public/js/OAuth.js"></script>
+        <form  name="logout" method="POST" action="index.php">
+            <input type="hidden" name="action" value="logoutUser"/>    
+            <label class="logoutLblPos"><input name="submit2" type="submit" id="submit2" value="logout"></label>
+        </form>
+        <h1><?=$user['username']?></h1>
+</div> <!--header closed-->
 
+</div>
+
+<div id="profileDiv">
+    
+                <img src='<?=$user['imageurl']?> 'alt="profile image" id="profile-image"/>
+                <div id="image-form-container">
+                <form name="imgForm" method="POST" action="index.php" enctype="multipart/form-data">
+                    <input type="hidden" name="action" value="uploadImg"/>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
+                    <label for="my-file" class="input-file-trigger">Edit Profile</label>
+                    <input type="file" name="profileImg" class="input-file" id="my-file" onchange="form.submit()"/><br />
+                </form>
+                </div>
+            </div>
+
+
+<div id="content">
+
+<div class="lists">
+<div class="list">
 <?php
-        $noMovies = 3;
-        $divCard='<div id="card';//[ex]'<div id="card
-        $classCard='class="cards">';//[ex]'<div id="card0" class="cards">
-        $divPoster=' <div id="poster';
-        $classPoster='class="posters">';
-        $tagImg = ' <img src="';
-        $divInfo='<div id="info';
-        $classInfo='class="movieInfo">';
-        $tagTitle='<h3>Title: ';
-        $tagDirector='<h3>Director: ';
-        $tagActors='<h3>Actors: ';
-            for($id=0; $id<3; $id++){
-                echo
-                $divCard.$id.'"'.$classCard.$divPoster.$id.'"'.$classPoster.$tagImg.$dataMovie[$id]['poster'].'"></div>'.$divInfo.$id.'"'.$classInfo.$tagTitle.$dataMovie[$id]['title'].'</h3>'.$tagDirector.$dataMovie[$id]['director'].'</h3>'.$tagActors.$dataMovie[$id]['actors'].'</h3></div></div>';
-            }
+    //String Interpolation......later???(I couldn't find how to use it.)
+    $noMovies = count($dataMovie);
+    for($i=0; $i<$noMovies; $i++){
+        $card = $dataMovie[$i];
+        include("card.php");
+    }
 ?>
-<input type="text" name="title" id="title" />
-<input type="submit" name="submit" value="search" onclick="fetchData('<?=$user['id']?>' )" />
-<script src="./public/js/movieDB.js"></script>
+
+       
+<div id="cardPlus" class="input-card" draggable="false">
+  
+        <h1>Add a Movie</h1>
+        <input type="text" name="title" id="title" class="input-box"/>
+        <input type="submit" value="search" id="search" onclick="fetchData(<?=$user['id']?>)" />
+    <div class="button-container">
+        <input class="button" id="edit" type="button" value="Edit" name="edit" />
+        <input class="button" id="save" type="button" value="Save" />
+    </div>
+</div>
+
+        </div>
+        <div id="autocomplete"></div>
+       
+        <script src="./public/js/ranking.js"></script>
+        <script type="text/javascript">var userId ='<?=$session_userId; ?>';</script>
+        <script src="./public/js/movieDB.js"></script>
+        <script src="./public/js/drag_and_drop.js"></script>
+        <script src="./public/js/autocomplete.js"></script>
     </body>
 </html>
 
 
+            

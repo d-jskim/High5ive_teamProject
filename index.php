@@ -11,8 +11,12 @@ try {
         } else if ($bodyArr['action'] == 'subscribeUser'){
             subscribeUser($bodyArr);
         } else if ($bodyArr['action'] == 'loginUser'){
+            print_r($bodyArr);
             if(isset($bodyArr['username']) && isset($bodyArr['password'])) 
             {
+                echo "this is loginUser action!!!!";
+                $_SESSION['userId'] = $bodyArr['username'];
+                $_SESSION['password'] = $bodyArr['password'];
                 loginUser($bodyArr);
             } else {
                 throw new Exception('Error: login error');
@@ -23,9 +27,16 @@ try {
             }
             
         } else if ($bodyArr['action'] == 'logoutUser') {
-            logoutUser();
+                logoutUser();
+        } else if ($bodyArr['action'] == 'uploadImg') {
+                $userId = $_SESSION['userId'];
+                uploadImg($_FILES, $userId);
         } else if ($bodyArr['action'] == 'addMovie') {
                 addMovie($bodyArr);
+        } else if ($bodyArr['action'] == 'deleteMovie'){
+                deleteMovie($bodyArr);
+        } else if ($bodyArr['action'] == 'updateRanking'){
+                updateRanking($bodyArr);
         }
     }
     else {
